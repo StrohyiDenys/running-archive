@@ -8,3 +8,8 @@
 cache/
 # Dev`s personal notes
 *.txt
+# Composer
+/vendor/
+
+
+*.env

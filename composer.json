@@ -1,0 +1,15 @@
+{
+  "name": "strohyidenys/running-notes",
+  "require": {
+    "php": ">=8.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Core\\":"src/Core/",
+      "Models\\":"src/Models/"
+    }
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^8.1"
+  }
+}

@@ -8,12 +8,12 @@ require BASE_DIR . "vendor/autoload.php";
 $db_config = (require BASE_DIR . "src/config.php")['database'];
 $db = new Database($db_config, 'root');
 $router = new Router();
+$uri = $_SERVER['REQUEST_URI'];
+$method = $_POST['method'] ?? $_SERVER['REQUEST_METHOD'];
+
 require BASE_DIR . "src/routes.php";
-// Create db class
-// Create Response class
-// Fill the index.php
-//    composer
-//    database initialization
-//    routing
-//Next build the business-logic:
-//Note Repository, UserRepository, Controller
+$router->route($uri, $method);
+//Now: create the LogRepository
+//Create the Auth controller and routes
+//Create the UserRepository
+

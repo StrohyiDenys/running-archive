@@ -16,4 +16,5 @@ $router->route($uri, $method);
 //Now: create the LogRepository
 //Create the Auth controller and routes
 //Create the UserRepository
+//Create the Database tables
 

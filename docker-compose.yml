@@ -2,7 +2,7 @@ services:
   # Apache + PHP Server
   web:
     build: .
-    container_name: running_notes_web
+    container_name: running_archive_web
     ports:
       - "80:80"
     volumes:
@@ -13,7 +13,7 @@ services:
   # MySQL DB
   db:
     image: mysql:9.0
-    container_name: running_notes_mysql
+    container_name: running_archive_mysql
     ports:
       - "3306:3306"
     environment:

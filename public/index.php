@@ -13,8 +13,10 @@ $method = $_POST['method'] ?? $_SERVER['REQUEST_METHOD'];
 
 require BASE_DIR . "src/routes.php";
 $router->route($uri, $method);
-//Now: create the LogRepository
+//Now: Create the Database tables
+//download Phinx and create migrations for the tables
+// create the LogRepository
 //Create the Auth controller and routes
 //Create the UserRepository
-//Create the Database tables
+
 

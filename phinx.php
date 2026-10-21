@@ -20,8 +20,8 @@ return
         ],
         'development' => [
             'adapter' => 'mysql',
-            'host' => 'localhost',
-            'name' => 'development_db',
+            'host' => 'db', //docker db service
+            'name' => 'running_archive',
             'user' => 'root',
             'pass' => '',
             'port' => '3306',

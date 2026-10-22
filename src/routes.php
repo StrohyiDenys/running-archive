@@ -1,8 +1,9 @@
 <?php
 
-use controllers\RunningLogController;
+use App\Controllers\RunningLogController;
+use App\Models\Repositories\RunningLogRepository;
 
-$runningLogController = new RunningLogController();
+$runningLogController = new RunningLogController(new RunningLogRepository($db));
 $router->get('/logs', $runningLogController, 'index');
 $router->get('/logs/{id}', $runningLogController, 'show');
 $router->post('/logs', $runningLogController, 'store');

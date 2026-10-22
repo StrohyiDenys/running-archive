@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace App\Core;
 use PDO;
 class Database
 {
@@ -14,7 +14,7 @@ class Database
     public function query(string $sql, array $params = []){
         $this->statement = $this->connection->prepare($sql);
         $this->statement->execute($params);
-        return $this->statement;
+        return $this;
     }
     public function fetch(): array{
         return $this->statement->fetch();

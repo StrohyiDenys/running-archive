@@ -6,8 +6,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Core\\":"src/Core/",
-      "Models\\":"src/Models/"
+      "App\\": "src/"
     }
   },
   "require-dev": {

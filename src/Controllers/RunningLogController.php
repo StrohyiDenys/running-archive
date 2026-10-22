@@ -1,26 +1,28 @@
 <?php
 
-namespace controllers;
+namespace App\Controllers;
 
-use Core\Controller;
-use Core\Response;
+use App\Core\Controller;
+use App\Models\Repositories\RunningLogRepository;
+
 class RunningLogController extends Controller
 {
-    public function __construct(private UserRepository $users)
+    public function __construct(private RunningLogRepository $logRepository)
     {
 
     }
     public function index(){
-        $this->jsonResponse($users->FindAll())->send(); //transform array with users to json and send it to the client
+        $result = $this->logRepository->getAll(); //transform array with users to json and send it to the client
+        return $this->jsonResponse($result)->send();
     }
     //show store destroy update
-    public function show(){
+    public function show($id){
         //todo
     }
     public function store(){
         //todo
     }
-    public function update(){
+    public function update($id){
         //todo
     }
     public function destroy(){

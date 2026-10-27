@@ -15,17 +15,20 @@ class RunningLogController extends Controller
         $result = $this->logRepository->getAll(); //transform array with users to json and send it to the client
         return $this->jsonResponse($result)->send();
     }
-    //show store destroy update
     public function show($id){
-        //todo
+        $result = $this->logRepository->get();
+        return $this->jsonResponse($result)->send();
     }
     public function store(){
-        //todo
+        // need to add POST data to create
+        // Maybe need to use DTO or put raw data from POST
+        $result = $this->logRepository->create();
+        return $this->jsonResponse($result)->send();
     }
     public function update($id){
         //todo
     }
-    public function destroy(){
+    public function destroy($id){
         //todo
     }
 }

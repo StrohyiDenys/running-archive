@@ -27,13 +27,15 @@ class RunningLogRepository
     }
     public function findById($id) : RunningLog // show
     {
-        // fetch(statement)
-        // transform array to RunningLog object
+        $result = $this->db->query("SELECT * FROM running_logs WHERE id = :id", ['id' => $id])->fetch();
+        return $this->toEntity($result);
     }
-    public function create($data) : RunningLog // store
+    public function create(?int $user_id, ?float $distance, ?int $time, string $date, ?string $notes) : RunningLog // store
     {
-        // insert into running_logs (user_id, distance, time, date, notes) values (:user_id, :distance, :time, :date, :notes)
-        // return new RunningLog object
+        $this->db->query("INSERT INTO running_logs(user_id, distance, time, date, notes) VALUES(:user_id, :distance, :time, :date, :notes)", ['user_id' => $user_id, 'distance' => $distance, 'time' => $time, 'date' => $date, 'notes' => $notes]);
+        $id = $this->db->getLastInsertId();
+        $result = $this->db->query("SELECT * FROM running_logs WHERE id = :id", ['id' => $id])->fetch();
+        return $this->toEntity($result);
     }
     private function toEntity($log) :RunningLog
     {

@@ -16,6 +16,9 @@ class Database
         $this->statement->execute($params);
         return $this;
     }
+    public function getLastInsertId() :int {
+        return (int)$this->connection->lastInsertId(); //lastInsertId returns string so i convert it to INT
+    }
     public function fetch(): array{
         return $this->statement->fetch();
     }

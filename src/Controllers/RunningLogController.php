@@ -16,7 +16,7 @@ class RunningLogController extends Controller
         return $this->jsonResponse($result)->send();
     }
     public function show($id){
-        $result = $this->logRepository->get();
+        $result = $this->logRepository->getById($id);
         return $this->jsonResponse($result)->send();
     }
     public function store(){
@@ -29,12 +29,23 @@ class RunningLogController extends Controller
             $_POST['date'] ?? null,
             $_POST['notes'] ?? null,
         );
+        return $this->jsonResponse($result)->send(201);
+    }
+    public function update(){
+        $httpBody = file_get_contents('php://input');
+        $row = json_decode($httpBody, true);
+        $result = $this->logRepository->update(
+            $row['id'],
+            $row['user_id'] ?? null,
+            $row['distance'] ?? null,
+            $row['time'] ?? null,
+            $row['date'] ?? null,
+            $row['notes'] ?? null,
+        );
         return $this->jsonResponse($result)->send();
     }
-    public function update($id){
-        //todo
-    }
     public function destroy($id){
-        //todo
+       $result = $this->logRepository->delete($id);
+       return $this->jsonResponse($result)->send();
     }
 }

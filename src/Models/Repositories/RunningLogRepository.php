@@ -25,7 +25,7 @@ class RunningLogRepository
         // transform array to array of RunningLog objects
         // do i need extract RunningLog convert to a separate function?
     }
-    public function findById($id) : RunningLog // show
+    public function getById($id) : RunningLog // show
     {
         $result = $this->db->query("SELECT * FROM running_logs WHERE id = :id", ['id' => $id])->fetch();
         return $this->toEntity($result);
@@ -36,6 +36,16 @@ class RunningLogRepository
         $id = $this->db->getLastInsertId();
         $result = $this->db->query("SELECT * FROM running_logs WHERE id = :id", ['id' => $id])->fetch();
         return $this->toEntity($result);
+    }
+    public function update(int $id, ?int $user_id, ?float $distance, ?int $time, string $date, ?string $notes) : RunningLog // update
+    {
+        $this->db->Query("UPDATE running_logs SET user_id = :user_id, distance = :distance, time = :time, date = :date, notes = :notes WHERE id = :id", ['id' => $id, 'user_id' => $user_id, 'distance' => $distance, 'time' => $time, 'date' => $date, 'notes' => $notes]);
+        $result = $this->db->query("SELECT * FROM running_logs WHERE id = :id", ['id' => $id])->fetch();
+        return $this->toEntity($result);
+    }
+    public function delete(int $id) : array {
+        $this->db->query("DELETE FROM running_logs WHERE id = :id", ['id' => $id]);
+        return ['success' => true, 'message' => 'Running log deleted successfully'];
     }
     private function toEntity($log) :RunningLog
     {

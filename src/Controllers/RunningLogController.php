@@ -22,7 +22,13 @@ class RunningLogController extends Controller
     public function store(){
         // need to add POST data to create
         // Maybe need to use DTO or put raw data from POST
-        $result = $this->logRepository->create();
+        $result = $this->logRepository->create(
+            $_POST['user_id'] ?? null,
+            $_POST['distance'] ?? null,
+            $_POST['time'] ?? null,
+            $_POST['date'] ?? null,
+            $_POST['notes'] ?? null,
+        );
         return $this->jsonResponse($result)->send();
     }
     public function update($id){
